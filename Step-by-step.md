@@ -1,6 +1,6 @@
 # Step-by-step Approach
 ## Start with a new vault
-The best way is to start with a new vault. I named it **"WineCellar“**, which is much more appealing than "WineFridge“. Go to Settings (or Preferences at MacOS) &rarr; Options: Community plugins &rarr; Turn on community plugins &rarr; Browse and install and enable the six **plugins** Dataview, Metadata Menu, Quick Add, Paste image rename, Minimal Theme Settings, and Style Settings.
+The best way is to start with a new vault. I named it **"WineCellar“**, which is much more appealing than "WineFridge“. After you created it go to Settings (or Preferences at MacOS) &rarr; Options: Community plugins &rarr; Turn on community plugins &rarr; Browse and install and enable the six **plugins** Dataview, Metadata Menu, Quick Add, Paste image rename, Minimal Theme Settings, and Style Settings.
 
 Then install the Minimal **theme**: Settings &rarr; Options: Appearance &rarr; Themes &rarr; Manage. Search for "Minimal“ and click on "install and use“. 
 
@@ -122,4 +122,66 @@ Your wine folder should now look like this:
 
 ![WineFolder_with_first_note](https://github.com/user-attachments/assets/aa672924-eebf-407d-be76-9485c6edf8d9)
 
+## Collections
+### All wines
+The last step is to create some notes to see your collection in different ways. Make four empty notes in the folder "0_Collection“ with the titles "All wines“, "Cards“, "Fridge“, "Shopping List ShopA“, and "Shopping List ShopB“ (and replace "ShopA“ and "ShopB“ with your favorite wine shop).
 
+Open now the note "All wines“ and copy this code into your note:
+```
+# White wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "White wine")
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine","Winemaker", "Name", "Variety", "Vintage", "Country-Region", "Stars", "Value for Money", "Inventory", "Purchase Source", "Price", "Buy"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	p.Winemaker,
+	p.WineName,
+	p.Variety,
+	p.Vintage,
+	p["Country-Region"],
+	await f(dv, p, "Stars", {options: {showAddField: true}}),
+	p.ValueForMoney,
+	await f(dv, p, "Inventory", {options: {alwaysOn: true, showAddField: true}}),
+	p.PurchaseSource,
+	p.Price,
+	await f(dv, p, "Buy", {options: {alwaysOn: true, showAddField: true}})
+	])
+))
+
+```
+
+---
+# Red wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "Red wine")
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine","Winemaker", "Name", "Variety", "Vintage", "Country-Region", "Stars", "Value for Money", "Inventory", "Purchase Source", "Price", "Buy"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	p.Winemaker,
+	p.WineName,
+	p.Variety,
+	p.Vintage,
+	p["Country-Region"],
+	await f(dv, p, "Stars", {options: {showAddField: true}}),
+	p.ValueForMoney,
+	await f(dv, p, "Inventory", {options: {alwaysOn: true, showAddField: true}}),
+	p.PurchaseSource,
+	p.Price,
+	await f(dv, p, "Buy", {options: {alwaysOn: true, showAddField: true}})
+	])
+))
+
+```
+```
