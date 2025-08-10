@@ -126,8 +126,9 @@ Your wine folder should now look like this:
 ### All wines
 The last step is to create some notes to see your collection in different ways. Make four empty notes in the folder "0_Collection“ with the titles "All wines“, "Cards“, "Fridge“, "Shopping List ShopA“, and "Shopping List ShopB“ (and replace "ShopA“ and "ShopB“ with your favorite wine shop).
 
-Open now the note "All wines“ and copy this code into your note:
-```
+Open now the note "All wines“ and copy this code into your note: 
+
+````
 # White wines
 ```dataviewjs
 const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
@@ -184,4 +185,161 @@ await Promise.all(pages.map(async p => [
 ))
 
 ```
+````
+
+This will create two tables (for white and red wine each) and list the wines, sorted descending by _ValueForMoney_. In the reading view you should see the red wine of our first tasting note.
+
+![RedWineList](https://github.com/user-attachments/assets/ff02f726-e4ec-4513-9a53-a25c6bae5698)
+
+### Cards
+Let’s set up the next view. Open the "Cards“ note and copy this code into the note:
+
+````
+---
+cssclasses:
+  - cards
+  - cards-1-1
+  - hide-properties
+---
+
+# White wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "White wine")
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	])
+))
+
 ```
+
+
+---
+# Red wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "Red wine")
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	])
+))
+```
+````
+
+At the moment you still see the properties part above the cards. To hide it you have to add a little CSS snippet. Go to settings &rarr; Options: appearance &rarr; **CSS snippets** and click on the folder icon. Add a file there with the name "hide-properties.css", containing this text:
+
+```
+.hide-properties {
+    --metadata-display-reading: none;
+}
+```
+
+Reload the snippets and activate the "hide-properties" snippet.
+
+### Fridge
+The next note is the "Fridge“. Here you can see every wine which is currently in your wine fridge - so the "_Inventory_“ is larger than 0.
+
+Copy this code into this note:
+````
+# White wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "White wine" && p.Inventory > 0)
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine","Winemaker", "Name", "Variety", "Vintage", "Country-Region", "Stars", "Value for Money", "Inventory", "Purchase Source", "Price"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	p.Winemaker,
+	p.WineName,
+	p.Variety,
+	p.Vintage,
+	p["Country-Region"],
+	await f(dv, p, "Stars", {options: {showAddField: true}}),
+	p.ValueForMoney,
+	await f(dv, p, "Inventory", {options: {alwaysOn: true, showAddField: true}}),
+	p.PurchaseSource,
+	p.Price,
+	])
+))
+
+```
+
+---
+# Red wines
+```dataviewjs
+const {fieldModifier: f} = this.app.plugins.plugins["metadata-menu"].api;
+
+const pages = dv.pages('"1_Wines"')
+	.filter(p => p.Type === "Red wine" && p.Inventory > 0)
+	.sort((a, b) => (b["ValueForMoney"] ?? 0) - (a["ValueForMoney"] ?? 0)); // Descending
+
+dv.table(["Label","Wine","Winemaker", "Name", "Variety", "Vintage", "Country-Region", "Stars", "Value for Money", "Inventory", "Purchase Source", "Price"],
+await Promise.all(pages.map(async p => [
+	p.Label,
+	p.file.link, 
+	p.Winemaker,
+	p.WineName,
+	p.Variety,
+	p.Vintage,
+	p["Country-Region"],
+	await f(dv, p, "Stars", {options: {showAddField: true}}),
+	p.ValueForMoney,
+	await f(dv, p, "Inventory", {options: {alwaysOn: true, showAddField: true}}),
+	p.PurchaseSource,
+	p.Price,
+	])
+))
+
+```
+````
+
+### Shopping List
+And last but not least the shopping list. If have around 3 wine shops where I often buy wine. To fill my shopping list I increase the value of "Buy“. Every wine with a value for "_Buy_“ of more than 0 and the right shop name ("_PurchaseSource_“) will arise in this shopping list. When I want to buy a new wine in that shop, I already set up the tasting note. The _label_ tag is still empty, so this is my filter in the shopping list to distinguish between "Rebuy“ and "New wine“.
+
+Here is my code for "Shopping List ShopA“ (replace "ShopA“ with the right shop name):
+
+````
+
+### Rebuy
+```dataview
+table Label, Winemaker, Variety, Vintage, Country-Region, Price, Buy 
+from "1_Wines"
+where PurchaseSource = "ShopA" and Buy > 0 and Label
+sort Country-Region asc, ValueForMoney desc
+```
+
+### New wine
+```dataview
+table Label, Winemaker, Variety, Vintage, Country-Region, Price, Buy 
+from "1_Wines"
+where PurchaseSource = "ShopA" and Buy > 0 and !Label
+sort Country-Region asc, ValueForMoney desc
+```
+````
+
+## Final remarks
+If you want interactive tables click on the wine glass symbol next to the Wine fileClass and on "Table View“ in the heading of the fileClass note. Here you can set up different filters, arrange the order of your fields in the table and save it as a view. I don’t like how the tables look like so I use my own notes with predefined settings.
+
+**Now you are ready to go and adapt and fill your "Wine Cellar" vault.**
+
+
+
+
+
+
