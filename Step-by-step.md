@@ -112,7 +112,7 @@ With the app your label will look like this:
 .  
 <br/><br/>
 
-Additionally you can add a star rating, which is very nice for the card view, we will set up in a moment.
+Additionally you can add a star rating, which is very nice for the card view, which we will set up in a moment.
 
 <img width="370" height="473" alt="grafik" src="https://github.com/user-attachments/assets/834025d7-556a-4558-a7cf-43d0070567a7" />
 .  
@@ -154,7 +154,6 @@ await Promise.all(pages.map(async p => [
 	await f(dv, p, "Buy", {options: {alwaysOn: true, showAddField: true}})
 	])
 ))
-
 ```
 
 ---
@@ -183,7 +182,6 @@ await Promise.all(pages.map(async p => [
 	await f(dv, p, "Buy", {options: {alwaysOn: true, showAddField: true}})
 	])
 ))
-
 ```
 ````
 
@@ -216,7 +214,6 @@ await Promise.all(pages.map(async p => [
 	p.file.link, 
 	])
 ))
-
 ```
 
 
@@ -277,7 +274,6 @@ await Promise.all(pages.map(async p => [
 	p.Price,
 	])
 ))
-
 ```
 
 ---
@@ -305,7 +301,6 @@ await Promise.all(pages.map(async p => [
 	p.Price,
 	])
 ))
-
 ```
 ````
 
@@ -315,7 +310,6 @@ And last but not least the shopping list. If have around 3 wine shops where I of
 Here is my code for "Shopping List ShopA“ (replace "ShopA“ with the right shop name):
 
 ````
-
 ### Rebuy
 ```dataview
 table Label, Winemaker, Variety, Vintage, Country-Region, Price, Buy 
@@ -336,7 +330,7 @@ sort Country-Region asc, ValueForMoney desc
 ## Final remarks
 If you want interactive tables click on the wine glass symbol next to the Wine fileClass and on "Table View“ in the heading of the fileClass note. Here you can set up different filters, arrange the order of your fields in the table and save it as a view. I don’t like how the tables look like so I use my own notes with predefined settings.
 
-**Now you are ready to go and adapt and fill your "Wine Cellar" vault.**
+**Now you are ready to go and adapt and fill your "Wine Cellar" vault. Have fun!**
 
 
 
