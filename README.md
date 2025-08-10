@@ -17,16 +17,4 @@ and the Minimal Theme with its helper plugins
 
 Additionally, I use "![The Unlabeler](https://unlabeler.app/)" app (for iOS/iPad/MacOS) to get nice, undistorted, and rectangular wine labels. 
 
-## Step-by-step Approach
-The best way is to start with a new vault. I named it "WineCellar“, which is much more appealing than "WineFridge“. Go to Settings (or Preferences at MacOS) -> Options: Community plugins -> Turn on community plugins -> Browse and install and enable the six plugins named above.
 
-Then install the Minimal theme (Settings -> Options: Appearance -> Themes -> Manage. Search for "Minimal“ and click on "install and use“. 
-
-Let’s make some folders to start with (I use numbers at the beginning to have a proper sorting):
-0_Collection
-1_Wines
-8_FileClass
-9_Templates
-
-
-Now we have to change some settings:
