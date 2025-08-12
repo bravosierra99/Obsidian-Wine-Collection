@@ -21,6 +21,10 @@ To set everything up from the scratch I wrote a step-by-step instruction with al
 
 Here is an overview over the final Obsidian Wine Cellar vault:
 
-<video src="https://github.com/user-attachments/assets/0c7cec55-ed74-4a10-b39c-6d25b35065d0" controls="controls"></video>
+<video src="https://github.com/user-attachments/assets/79a23c42-8444-45de-8f46-55c4f3fcc335" controls="controls"></video>
+
+
+
+
 
 
