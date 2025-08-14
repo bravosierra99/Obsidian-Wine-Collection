@@ -19,7 +19,7 @@ Additionally, I use "![The Unlabeler](https://unlabeler.app/)" app (for iOS/iPad
 
 To set everything up from the scratch I wrote a [step-by-step instruction](Step-by-step.md) with all plugins, settings and code examples. If you don't want to set up the vault manually, I made an [example vault](/WineCellar) with the plugins and settings. Just copy it to your computer and open it with Obisidan.
 
-Here is an overview over the final Obsidian Wine Cellar vault:
+Here is an overview of the final Obsidian Wine Cellar vault:
 
 <video src="https://github.com/user-attachments/assets/79a23c42-8444-45de-8f46-55c4f3fcc335" controls="controls"></video>
 
