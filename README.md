@@ -15,9 +15,10 @@ and the ![Minimal Theme](https://github.com/kepano/obsidian-minimal) with its co
 - ![Minimal Theme Settings](https://github.com/kepano/obsidian-minimal-settings)
 - ![Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
 
-Additionally, I use "![The Unlabeler](https://unlabeler.app/)" app (for iOS/iPad/MacOS) to get nice, undistorted, and rectangular wine labels. 
+Additionally, I use "![The Unlabeler](https://unlabeler.app/)" app (for iOS/iPad/MacOS) to get nice, undistorted, and rectangular wine labels. In the interest of transparency, I should mention that I'm the developer of this app.
 
 To set everything up from the scratch I wrote a step-by-step instruction with all plugins, settings and code examples: [Step-by-step.md](Step-by-step.md)
+. If you don't want to set up the vault manually I made an example vault with the plugins and settings: [WineCellar-Vault](/WineCellar). Just copy it to your computer. 
 
 Here is an overview over the final Obsidian Wine Cellar vault:
 
