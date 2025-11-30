@@ -21,12 +21,21 @@ Appearance:
 Aroma:
 Taste:
 Aftertaste:
-Overal:
-Score Total:
+Overall:
+Total Score:
 ---
 
 ## Tasting note
-...
+### Appearance
+
+### Aroma
+
+### Taste
+
+### Aftertaste
+
+
+
 
 ## Label
 Label:: 
