@@ -1,5 +1,5 @@
 ---
-fileClass: Wine
+fileClass: Wine-AWS
 Name: "{{value:Winemaker}} - {{value:WineName}} - {{value:Vintage}}"
 Winemaker: "{{value:Winemaker}}"
 WineName: "{{value:WineName}}"
@@ -21,12 +21,21 @@ Appearance:
 Aroma:
 Taste:
 Aftertaste:
-Overal:
-Score Total:
+Overall:
+Total Score:
 ---
 
 ## Tasting note
-...
+### Appearance
+
+### Aroma
+
+### Taste
+
+### Aftertaste
+
+
+
 
 ## Label
 Label:: 
