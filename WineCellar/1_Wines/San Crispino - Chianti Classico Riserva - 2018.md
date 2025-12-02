@@ -41,4 +41,4 @@ Overall pretty meh
 
 
 ## Label
-Label:: ![[San Crispino - Chianti Classico Riserva - 2018.jpg]]
+Label:: ![[Buffalo Trace - Stagg Jr - 2024-1.jpg]]

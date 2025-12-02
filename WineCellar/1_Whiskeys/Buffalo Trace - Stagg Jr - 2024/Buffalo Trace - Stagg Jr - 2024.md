@@ -234,7 +234,7 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 ```
 
 ## Bottle Image
-BottleImage::![[Buffalo Trace - Stagg Jr - 2024.webp]]
+BottleImage::![[Buffalo Trace - Stagg Jr - 2024-1.webp]]
 
 ## Label
 Label::

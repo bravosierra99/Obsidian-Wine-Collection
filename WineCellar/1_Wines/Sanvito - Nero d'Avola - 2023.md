@@ -39,4 +39,4 @@ slight #mineral
 high #tanins
 
 ## Label
-Label:: ![[Sanvito - Nero d'Avola - 2023.jpg]]
+Label:: ![[Buffalo Trace - Stagg Jr - 2024.jpg]]

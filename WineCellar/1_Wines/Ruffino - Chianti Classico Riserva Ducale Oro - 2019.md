@@ -42,4 +42,4 @@ medium astringent
 
 
 ## Label
-Label:: ![[Ruffino - Chianti Classico Riserva Ducale Oro - 2019.webp]]
+Label:: ![[1_Wines/labels/Buffalo Trace - Stagg Jr - 2024.webp]]
