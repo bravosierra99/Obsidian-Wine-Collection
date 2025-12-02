@@ -107,6 +107,9 @@ if (tastings.length === 0) {
 const bottleName = dv.current().file.name;
 const folderPath = `1_Whiskeys/${bottleName}`;
 
+// Create container
+const container = dv.container;
+
 // Create button
 const button = dv.el('button', 'Add New Tasting');
 button.style.padding = '8px 16px';
@@ -116,21 +119,61 @@ button.style.border = 'none';
 button.style.borderRadius = '4px';
 button.style.cursor = 'pointer';
 button.style.fontSize = '14px';
+button.style.marginBottom = '10px';
 
-button.addEventListener('click', async () => {
+// Create form (hidden by default)
+const form = container.createEl('div');
+form.style.display = 'none';
+form.style.padding = '15px';
+form.style.border = '1px solid #ccc';
+form.style.borderRadius = '4px';
+form.style.marginTop = '10px';
+form.style.backgroundColor = 'var(--background-primary)';
+
+form.innerHTML = `
+    <h3>New Tasting</h3>
+    <div style="margin-bottom: 10px;">
+        <label style="display: block; margin-bottom: 5px;">Date (YYYY-MM-DD):</label>
+        <input type="text" id="tasting-date" value="${new Date().toISOString().split('T')[0]}" style="width: 100%; padding: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label style="display: block; margin-bottom: 5px;">Taster Name:</label>
+        <input type="text" id="tasting-taster" style="width: 100%; padding: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label style="display: block; margin-bottom: 5px;">Days from crack:</label>
+        <input type="number" id="tasting-days" value="0" style="width: 100%; padding: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label style="display: block; margin-bottom: 5px;">Fill level (%):</label>
+        <input type="number" id="tasting-fill" value="100" style="width: 100%; padding: 5px;">
+    </div>
+    <button id="create-tasting-btn" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Create</button>
+    <button id="cancel-tasting-btn" style="padding: 8px 16px; background-color: #ccc; color: black; border: none; border-radius: 4px; cursor: pointer;">Cancel</button>
+`;
+
+// Toggle form visibility
+button.addEventListener('click', () => {
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+});
+
+// Cancel button
+form.querySelector('#cancel-tasting-btn').addEventListener('click', () => {
+    form.style.display = 'none';
+});
+
+// Create button
+form.querySelector('#create-tasting-btn').addEventListener('click', async () => {
     try {
-        // Use metadata-menu's inputPrompt for input
-        const date = await app.plugins.plugins['metadata-menu'].api.inputPrompt(
-            "Date (YYYY-MM-DD)",
-            new Date().toISOString().split('T')[0]
-        );
-        if (!date) return;
+        const date = form.querySelector('#tasting-date').value;
+        const taster = form.querySelector('#tasting-taster').value;
+        const days = form.querySelector('#tasting-days').value;
+        const fill = form.querySelector('#tasting-fill').value;
 
-        const taster = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Taster Name", "");
-        if (!taster) return;
-
-        const days = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Days from crack", "0");
-        const fill = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Fill level (%)", "100");
+        if (!date || !taster) {
+            new Notice("Date and Taster Name are required!");
+            return;
+        }
 
         // Read template
         const templatePath = "WineCellar/9_Templates/Tasting.md";
@@ -140,8 +183,8 @@ button.addEventListener('click', async () => {
         let content = template
             .replace(/{{value:Date}}/g, date)
             .replace(/{{value:TasterName}}/g, taster)
-            .replace(/{{value:DaysFromCrack}}/g, days || "0")
-            .replace(/{{value:FillLevel}}/g, fill || "100")
+            .replace(/{{value:DaysFromCrack}}/g, days)
+            .replace(/{{value:FillLevel}}/g, fill)
             .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
 
         // Create file
@@ -155,6 +198,13 @@ button.addEventListener('click', async () => {
         await app.workspace.getLeaf().openFile(file);
 
         new Notice("Tasting created successfully!");
+
+        // Hide and reset form
+        form.style.display = 'none';
+        form.querySelector('#tasting-date').value = new Date().toISOString().split('T')[0];
+        form.querySelector('#tasting-taster').value = '';
+        form.querySelector('#tasting-days').value = '0';
+        form.querySelector('#tasting-fill').value = '100';
     } catch (error) {
         console.error("Error creating tasting:", error);
         new Notice(`Error: ${error.message}`);
