@@ -3,14 +3,14 @@ fileClass: Whiskey
 Name: Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024
 Distiller: Holladay Distillery
 WhiskeyName: Holladay Soft Red Wheat Rickhouse Proof
-AgeStatement: "6"
+AgeStatement: "6+ years"
 Year: "2024"
 Type: Wheated Bourbon
-MashBill:
-BarrelType:
+MashBill: 73% Corn, 15% Wheat, 12% Barley
+BarrelType: New Charred Oak
 Proof: 121.4
-Region-State: Missouri
-BatchNumber:
+Region-State: Weston, Missouri
+BatchNumber: October 2024
 BottleNumber:
 Price: "85"
 PurchaseSource: Perfect Pour Columbia
@@ -26,6 +26,24 @@ BottleImage:
 ## Bottle Information
 
 ### Product Details
+
+**About This Bourbon:**
+Holladay Soft Red Wheat Rickhouse Proof is a wheated bourbon produced at Holladay Distillery in Weston, Missouri. Each batch is bottled at barrel proof (uncut, unfiltered) directly from the rickhouse after a minimum of 6 years of aging. The October 2024 batch was pulled from Rickhouses B and C.
+
+**Mash Bill:** 73% Corn, 15% Wheat, 12% Barley
+
+**Production Notes:**
+- Aged minimum 6 years in original Holladay rickhouses
+- Bottled at exact barrel proof (no water added)
+- Each batch varies in proof and flavor profile
+- Produced in Weston, Missouri
+
+**Typical Flavor Profile (per reviews):**
+Stone fruits, caramel, banana nut bread, cedar wood, molasses, leather, baking spices
+
+**Market Info:**
+- MSRP: $70-80
+- Released in batches throughout the year
 
 ### Tasting Notes Summary
 
@@ -118,36 +136,109 @@ button.style.cursor = 'pointer';
 button.style.fontSize = '14px';
 
 button.addEventListener('click', async () => {
-    const date = prompt("Date (YYYY-MM-DD):", new Date().toISOString().split('T')[0]);
-    if (!date) return;
+    try {
+        // Create modal for input
+        class TastingModal extends this.app.workspace.Modal {
+            constructor(app, onSubmit) {
+                super(app);
+                this.onSubmit = onSubmit;
+            }
 
-    const taster = prompt("Taster Name:");
-    if (!taster) return;
+            onOpen() {
+                const { contentEl } = this;
+                contentEl.createEl("h2", { text: "New Tasting" });
 
-    const days = prompt("Days from crack:", "0");
-    const fill = prompt("Fill level (%):", "100");
+                // Date input
+                const dateDiv = contentEl.createDiv();
+                dateDiv.createEl("label", { text: "Date (YYYY-MM-DD):" });
+                const dateInput = dateDiv.createEl("input", { type: "text" });
+                dateInput.value = new Date().toISOString().split('T')[0];
+                dateInput.style.width = "100%";
+                dateInput.style.marginBottom = "10px";
 
-    // Read template
-    const templatePath = "WineCellar/9_Templates/Tasting.md";
-    const template = await app.vault.adapter.read(templatePath);
+                // Taster input
+                const tasterDiv = contentEl.createDiv();
+                tasterDiv.createEl("label", { text: "Taster Name:" });
+                const tasterInput = tasterDiv.createEl("input", { type: "text" });
+                tasterInput.style.width = "100%";
+                tasterInput.style.marginBottom = "10px";
 
-    // Replace template variables
-    let content = template
-        .replace(/{{value:Date}}/g, date)
-        .replace(/{{value:TasterName}}/g, taster)
-        .replace(/{{value:DaysFromCrack}}/g, days)
-        .replace(/{{value:FillLevel}}/g, fill)
-        .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
+                // Days from crack input
+                const daysDiv = contentEl.createDiv();
+                daysDiv.createEl("label", { text: "Days from crack:" });
+                const daysInput = daysDiv.createEl("input", { type: "number" });
+                daysInput.value = "0";
+                daysInput.style.width = "100%";
+                daysInput.style.marginBottom = "10px";
 
-    // Create file
-    const fileName = `Tasting-${date}-${taster}.md`;
-    const filePath = `WineCellar/${folderPath}/${fileName}`;
+                // Fill level input
+                const fillDiv = contentEl.createDiv();
+                fillDiv.createEl("label", { text: "Fill level (%):" });
+                const fillInput = fillDiv.createEl("input", { type: "number" });
+                fillInput.value = "100";
+                fillInput.style.width = "100%";
+                fillInput.style.marginBottom = "10px";
 
-    await app.vault.create(filePath, content);
+                // Submit button
+                const submitBtn = contentEl.createEl("button", { text: "Create Tasting" });
+                submitBtn.style.marginTop = "10px";
+                submitBtn.addEventListener("click", () => {
+                    this.onSubmit({
+                        date: dateInput.value,
+                        taster: tasterInput.value,
+                        days: daysInput.value,
+                        fill: fillInput.value
+                    });
+                    this.close();
+                });
+            }
 
-    // Open the new file
-    const file = app.vault.getAbstractFileByPath(filePath);
-    await app.workspace.getLeaf().openFile(file);
+            onClose() {
+                const { contentEl } = this;
+                contentEl.empty();
+            }
+        }
+
+        // Show modal and handle submission
+        new TastingModal(this.app, async (data) => {
+            try {
+                if (!data.date || !data.taster) {
+                    new Notice("Date and Taster Name are required!");
+                    return;
+                }
+
+                // Read template
+                const templatePath = "WineCellar/9_Templates/Tasting.md";
+                const template = await app.vault.adapter.read(templatePath);
+
+                // Replace template variables
+                let content = template
+                    .replace(/{{value:Date}}/g, data.date)
+                    .replace(/{{value:TasterName}}/g, data.taster)
+                    .replace(/{{value:DaysFromCrack}}/g, data.days)
+                    .replace(/{{value:FillLevel}}/g, data.fill)
+                    .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
+
+                // Create file
+                const fileName = `Tasting-${data.date}-${data.taster}.md`;
+                const filePath = `WineCellar/${folderPath}/${fileName}`;
+
+                await app.vault.create(filePath, content);
+
+                // Open the new file
+                const file = app.vault.getAbstractFileByPath(filePath);
+                await app.workspace.getLeaf().openFile(file);
+
+                new Notice("Tasting created successfully!");
+            } catch (error) {
+                console.error("Error creating tasting:", error);
+                new Notice(`Error creating tasting: ${error.message}`);
+            }
+        }).open();
+    } catch (error) {
+        console.error("Error opening modal:", error);
+        new Notice(`Error: ${error.message}`);
+    }
 });
 ```
 
