@@ -176,7 +176,7 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
         }
 
         // Read template
-        const templatePath = "WineCellar/9_Templates/Tasting.md";
+        const templatePath = "9_Templates/Tasting.md";
         const template = await app.vault.adapter.read(templatePath);
 
         // Replace template variables
@@ -189,7 +189,7 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 
         // Create file
         const fileName = `Tasting-${date}-${taster}.md`;
-        const filePath = `WineCellar/${folderPath}/${fileName}`;
+        const filePath = `${folderPath}/${fileName}`;
 
         await app.vault.create(filePath, content);
 

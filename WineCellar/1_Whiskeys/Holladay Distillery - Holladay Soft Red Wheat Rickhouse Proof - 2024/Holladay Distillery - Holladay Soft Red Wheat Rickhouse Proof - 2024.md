@@ -151,7 +151,7 @@ button.addEventListener('click', async () => {
         const fill = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Fill level (%)", "100");
 
         // Read template
-        const templatePath = "WineCellar/9_Templates/Tasting.md";
+        const templatePath = "9_Templates/Tasting.md";
         const template = await app.vault.adapter.read(templatePath);
 
         // Replace template variables
@@ -164,7 +164,7 @@ button.addEventListener('click', async () => {
 
         // Create file
         const fileName = `Tasting-${date}-${taster}.md`;
-        const filePath = `WineCellar/${folderPath}/${fileName}`;
+        const filePath = `${folderPath}/${fileName}`;
 
         await app.vault.create(filePath, content);
 
