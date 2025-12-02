@@ -1,25 +1,25 @@
 ---
 fileClass: Whiskey
-Name: "{{value:Distiller}} - {{value:WhiskeyName}} - {{value:Year}}"
-Distiller: "{{value:Distiller}}"
-WhiskeyName: "{{value:WhiskeyName}}"
-AgeStatement:
-Year: "{{value:Year}}"
-Type:
+Name: Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024
+Distiller: Holladay Distillery
+WhiskeyName: Holladay Soft Red Wheat Rickhouse Proof
+AgeStatement: "6"
+Year: "2024"
+Type: Wheated Bourbon
 MashBill:
 BarrelType:
-Proof:
-Region-State:
+Proof: 121.4
+Region-State: Missouri
 BatchNumber:
 BottleNumber:
-Price:
-PurchaseSource:
+Price: "85"
+PurchaseSource: Perfect Pour Columbia
 PurchaseLink:
 Inventory: 0
-Buy: 0
+Buy: 1
 Stars: --
-ValueForMoney:
-BottleOpenedDate:
+ValueForMoney: 8.5
+BottleOpenedDate: 2024-11-15
 BottleImage:
 ---
 
@@ -103,10 +103,10 @@ if (tastings.length === 0) {
 
 ### Create New Tasting
 
-To add a new tasting for this bottle, use the QuickAdd command or create a new note in the `1_Whiskeys/{{value:Distiller}} - {{value:WhiskeyName}} - {{value:Year}}` folder.
+To add a new tasting for this bottle, use the QuickAdd command or create a new note in the `1_Whiskeys/Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024` folder.
 
 ## Bottle Image
-BottleImage::
+BottleImage::![[Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024.jpg]]
 
 ## Label
 Label::
