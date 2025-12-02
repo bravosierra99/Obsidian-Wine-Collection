@@ -137,106 +137,44 @@ button.style.fontSize = '14px';
 
 button.addEventListener('click', async () => {
     try {
-        // Create modal for input
-        class TastingModal extends this.app.workspace.Modal {
-            constructor(app, onSubmit) {
-                super(app);
-                this.onSubmit = onSubmit;
-            }
+        // Use metadata-menu's inputPrompt for input
+        const date = await app.plugins.plugins['metadata-menu'].api.inputPrompt(
+            "Date (YYYY-MM-DD)",
+            new Date().toISOString().split('T')[0]
+        );
+        if (!date) return;
 
-            onOpen() {
-                const { contentEl } = this;
-                contentEl.createEl("h2", { text: "New Tasting" });
+        const taster = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Taster Name", "");
+        if (!taster) return;
 
-                // Date input
-                const dateDiv = contentEl.createDiv();
-                dateDiv.createEl("label", { text: "Date (YYYY-MM-DD):" });
-                const dateInput = dateDiv.createEl("input", { type: "text" });
-                dateInput.value = new Date().toISOString().split('T')[0];
-                dateInput.style.width = "100%";
-                dateInput.style.marginBottom = "10px";
+        const days = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Days from crack", "0");
+        const fill = await app.plugins.plugins['metadata-menu'].api.inputPrompt("Fill level (%)", "100");
 
-                // Taster input
-                const tasterDiv = contentEl.createDiv();
-                tasterDiv.createEl("label", { text: "Taster Name:" });
-                const tasterInput = tasterDiv.createEl("input", { type: "text" });
-                tasterInput.style.width = "100%";
-                tasterInput.style.marginBottom = "10px";
+        // Read template
+        const templatePath = "WineCellar/9_Templates/Tasting.md";
+        const template = await app.vault.adapter.read(templatePath);
 
-                // Days from crack input
-                const daysDiv = contentEl.createDiv();
-                daysDiv.createEl("label", { text: "Days from crack:" });
-                const daysInput = daysDiv.createEl("input", { type: "number" });
-                daysInput.value = "0";
-                daysInput.style.width = "100%";
-                daysInput.style.marginBottom = "10px";
+        // Replace template variables
+        let content = template
+            .replace(/{{value:Date}}/g, date)
+            .replace(/{{value:TasterName}}/g, taster)
+            .replace(/{{value:DaysFromCrack}}/g, days || "0")
+            .replace(/{{value:FillLevel}}/g, fill || "100")
+            .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
 
-                // Fill level input
-                const fillDiv = contentEl.createDiv();
-                fillDiv.createEl("label", { text: "Fill level (%):" });
-                const fillInput = fillDiv.createEl("input", { type: "number" });
-                fillInput.value = "100";
-                fillInput.style.width = "100%";
-                fillInput.style.marginBottom = "10px";
+        // Create file
+        const fileName = `Tasting-${date}-${taster}.md`;
+        const filePath = `WineCellar/${folderPath}/${fileName}`;
 
-                // Submit button
-                const submitBtn = contentEl.createEl("button", { text: "Create Tasting" });
-                submitBtn.style.marginTop = "10px";
-                submitBtn.addEventListener("click", () => {
-                    this.onSubmit({
-                        date: dateInput.value,
-                        taster: tasterInput.value,
-                        days: daysInput.value,
-                        fill: fillInput.value
-                    });
-                    this.close();
-                });
-            }
+        await app.vault.create(filePath, content);
 
-            onClose() {
-                const { contentEl } = this;
-                contentEl.empty();
-            }
-        }
+        // Open the new file
+        const file = app.vault.getAbstractFileByPath(filePath);
+        await app.workspace.getLeaf().openFile(file);
 
-        // Show modal and handle submission
-        new TastingModal(this.app, async (data) => {
-            try {
-                if (!data.date || !data.taster) {
-                    new Notice("Date and Taster Name are required!");
-                    return;
-                }
-
-                // Read template
-                const templatePath = "WineCellar/9_Templates/Tasting.md";
-                const template = await app.vault.adapter.read(templatePath);
-
-                // Replace template variables
-                let content = template
-                    .replace(/{{value:Date}}/g, data.date)
-                    .replace(/{{value:TasterName}}/g, data.taster)
-                    .replace(/{{value:DaysFromCrack}}/g, data.days)
-                    .replace(/{{value:FillLevel}}/g, data.fill)
-                    .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
-
-                // Create file
-                const fileName = `Tasting-${data.date}-${data.taster}.md`;
-                const filePath = `WineCellar/${folderPath}/${fileName}`;
-
-                await app.vault.create(filePath, content);
-
-                // Open the new file
-                const file = app.vault.getAbstractFileByPath(filePath);
-                await app.workspace.getLeaf().openFile(file);
-
-                new Notice("Tasting created successfully!");
-            } catch (error) {
-                console.error("Error creating tasting:", error);
-                new Notice(`Error creating tasting: ${error.message}`);
-            }
-        }).open();
+        new Notice("Tasting created successfully!");
     } catch (error) {
-        console.error("Error opening modal:", error);
+        console.error("Error creating tasting:", error);
         new Notice(`Error: ${error.message}`);
     }
 });
