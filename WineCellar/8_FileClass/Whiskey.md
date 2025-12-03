@@ -23,15 +23,16 @@ fields:
   - name: Type
     type: Select
     options:
-      values:
-        - "Bourbon"
-        - "Rye Whiskey"
-        - "Tennessee Whiskey"
-        - "Single Malt"
-        - "Blended Whiskey"
-        - "Wheat Whiskey"
-        - "Canadian Whisky"
-        - "Wheated Bourbon"
+      sourceType: ValuesList
+      valuesList:
+        "1": Bourbon
+        "2": Rye Whiskey
+        "3": Tennessee Whiskey
+        "4": Single Malt
+        "5": Blended Whiskey
+        "6": Wheat Whiskey
+        "7": Canadian Whisky
+        "8": Wheated Bourbon
     path: ""
     id: WhType
   - name: MashBill
@@ -100,13 +101,14 @@ fields:
   - name: Stars
     type: Select
     options:
-      values:
-        - "--"
-        - "⭐️"
-        - "⭐️⭐️"
-        - "⭐️⭐️⭐️"
-        - "⭐️⭐️⭐️⭐️"
-        - "⭐️⭐️⭐️⭐️⭐️"
+      sourceType: ValuesList
+      valuesList:
+        "1": --
+        "2": ⭐️
+        "3": ⭐️⭐️
+        "4": ⭐️⭐️⭐️
+        "5": ⭐️⭐️⭐️⭐️
+        "6": ⭐️⭐️⭐️⭐️⭐️
     path: ""
     id: WhStar
   - name: ValueForMoney
