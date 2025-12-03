@@ -43,11 +43,12 @@ fields:
   - name: Type
     type: Select
     options:
-      values:
-        - "Red wine"
-        - "White wine"
-        - "Rose wine"
-        - "Champagne"
+      sourceType: ValuesList
+      valuesList:
+        "1": Red wine
+        "2": White wine
+        "3": Rose wine
+        "4": Champagne
     path: ""
     id: yi4Ej9
   - name: Country-Region
@@ -85,13 +86,14 @@ fields:
   - name: Stars
     type: Select
     options:
-      values:
-        - "--"
-        - "⭐️"
-        - "⭐️⭐️"
-        - "⭐️⭐️⭐️"
-        - "⭐️⭐️⭐️⭐️"
-        - "⭐️⭐️⭐️⭐️⭐️"
+      sourceType: ValuesList
+      valuesList:
+        "1": --
+        "2": ⭐️
+        "3": ⭐️⭐️
+        "4": ⭐️⭐️⭐️
+        "5": ⭐️⭐️⭐️⭐️
+        "6": ⭐️⭐️⭐️⭐️⭐️
     path: ""
     id: DZ1o6Z
   - name: Price
