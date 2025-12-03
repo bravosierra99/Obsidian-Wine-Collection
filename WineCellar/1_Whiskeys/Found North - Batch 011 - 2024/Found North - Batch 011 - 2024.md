@@ -17,7 +17,7 @@ PurchaseSource:
 PurchaseLink:
 Inventory: 4
 Buy: 1
-Stars: ⭐️⭐️⭐️⭐️⭐️
+Stars: ⭐️⭐️
 ValueForMoney: 9.5
 BottleOpenedDate:
 BottleImage:

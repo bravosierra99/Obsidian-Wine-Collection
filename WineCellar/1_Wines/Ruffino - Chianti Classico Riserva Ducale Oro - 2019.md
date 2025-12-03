@@ -12,7 +12,7 @@ Style:
 Price: "40"
 PurchaseSource:
 PurchaseLink:
-Stars: --
+Stars:
 ValueForMoney:
 Points:
 Inventory: 0
