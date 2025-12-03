@@ -43,8 +43,7 @@ fields:
   - name: Type
     type: Select
     options:
-      sourceType: ValuesList
-      valuesList:
+      values:
         - Red wine
         - White wine
         - Rose wine
@@ -86,8 +85,7 @@ fields:
   - name: Stars
     type: Select
     options:
-      sourceType: ValuesList
-      valuesList:
+      values:
         - --
         - ⭐️
         - ⭐️⭐️

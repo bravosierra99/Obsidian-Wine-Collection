@@ -23,8 +23,7 @@ fields:
   - name: Type
     type: Select
     options:
-      sourceType: ValuesList
-      valuesList:
+      values:
         - Bourbon
         - Rye Whiskey
         - Tennessee Whiskey
@@ -101,8 +100,7 @@ fields:
   - name: Stars
     type: Select
     options:
-      sourceType: ValuesList
-      valuesList:
+      values:
         - --
         - ⭐️
         - ⭐️⭐️
