@@ -110,49 +110,6 @@ fields:
       thumbnailSize: "100"
     path: ""
     id: pvZCsM
-  - name: Total Score
-    type: Formula
-    options:
-      autoUpdate: true
-      formula: current.Aroma + current.Appearance + current.Taste + current.Aftertaste + current.Overall
-    path: ""
-    id: rC5g5g
-  - name: Aroma
-    type: Number
-    options:
-      min: 0
-      max: 6
-      step: 0.5
-    path: ""
-    id: TkEaR6
-  - name: Appearance
-    type: Number
-    options:
-      min: 0
-      max: 3
-      step: 0.5
-    path: ""
-    id: YnZOFD
-  - name: Taste
-    type: Number
-    options:
-      min: 0
-      max: 6
-      step: 0.5
-    path: ""
-    id: gqd623
-  - name: Aftertaste
-    type: Number
-    options:
-      max: 3
-      step: 0.5
-    path: ""
-    id: MfF4ln
-  - name: Overall
-    type: Number
-    options: {}
-    path: ""
-    id: HZEMor
 version: "2.37"
 limit: 20
 mapWithTag: false
@@ -165,15 +122,9 @@ extends:
 savedViews: []
 favoriteView:
 fieldsOrder:
-  - HZEMor
-  - MfF4ln
-  - gqd623
-  - YnZOFD
-  - TkEaR6
   - pvZCsM
   - Lgeucy
   - DZ1o6Z
-  - rC5g5g
   - T0TAd0
   - xrSEif
   - EKHZxd
