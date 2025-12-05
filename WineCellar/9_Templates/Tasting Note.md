@@ -22,7 +22,7 @@ Aroma:
 Taste:
 Aftertaste:
 Overall:
-Total Score:
+Total Score: 0
 ---
 
 ## Tasting note
