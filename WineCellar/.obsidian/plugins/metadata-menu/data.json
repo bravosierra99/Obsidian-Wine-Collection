@@ -20,9 +20,7 @@
   "frontmatterListDisplay": "asArray",
   "fileClassExcludedFolders": [],
   "showIndexingStatusInStatusBar": true,
-  "fileIndexingExcludedFolders": [
-    "9_Templates/"
-  ],
+  "fileIndexingExcludedFolders": [],
   "fileIndexingExcludedExtensions": [
     ".excalidraw.md"
   ],
@@ -31,6 +29,7 @@
   "showFileClassSelectInModal": true,
   "chooseFileClassAtFileCreation": false,
   "autoInsertFieldsAtFileClassInsertion": false,
-  "fileClassIcon": "wine",
-  "isAutoCalculationEnabled": true
+  "fileClassIcon": "package",
+  "isAutoCalculationEnabled": true,
+  "disableDataviewPrompt": false
 }

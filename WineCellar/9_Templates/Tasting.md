@@ -8,7 +8,7 @@ Nose:
 Palate:
 Finish:
 Overall:
-TotalScore:
+TotalScore: 0
 LinkedBottle: "{{value:LinkedBottle}}"
 ---
 
