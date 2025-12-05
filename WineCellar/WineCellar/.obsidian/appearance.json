@@ -1,0 +1,7 @@
+{
+  "cssTheme": "Minimal",
+  "enabledCssSnippets": [
+    "hide-properties"
+  ],
+  "baseFontSize": 16
+}

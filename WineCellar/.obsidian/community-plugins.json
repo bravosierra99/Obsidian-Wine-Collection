@@ -1,8 +1,8 @@
 [
   "dataview",
-  "metadata-menu",
   "quickadd",
   "obsidian-minimal-settings",
   "obsidian-style-settings",
-  "obsidian-paste-image-rename"
+  "obsidian-paste-image-rename",
+  "metadata-menu"
 ]

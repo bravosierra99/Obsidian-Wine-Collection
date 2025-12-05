@@ -1,8 +1,6 @@
 {
   "cssTheme": "Minimal",
-  "enabledCssSnippets": [
-    "hide-properties"
-  ],
+  "enabledCssSnippets": [],
   "baseFontSize": 16,
   "theme": "obsidian"
 }

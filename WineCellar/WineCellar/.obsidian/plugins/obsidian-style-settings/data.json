@@ -1,0 +1,8 @@
+{
+  "minimal-style@@trim-cols": false,
+  "minimal-style@@metadata-heading-off": true,
+  "minimal-style@@row-lines": true,
+  "minimal-style@@row-hover": true,
+  "minimal-style@@h1-size": "1.3em",
+  "minimal-style@@inline-title-size": "1.3em"
+}
