@@ -201,4 +201,4 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 ```
 
 ## Label
-Label::
+Label:: ![[Bonanza - The Vinekeeper - 2024.webp]]

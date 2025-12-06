@@ -8,7 +8,7 @@ Taste: 3.5
 Aftertaste: 1.5
 Overall: 1
 AWS Score: 11.5
-100pt Scale: 57.5
+100pt Scale: 78.75
 LinkedBottle: "[[Bonanza - The Vinekeeper - 2024]]"
 ---
 

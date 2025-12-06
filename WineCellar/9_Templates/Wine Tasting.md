@@ -8,7 +8,7 @@ Taste:
 Aftertaste:
 Overall:
 AWS Score: 0
-100pt Scale: 0
+100pt Scale: 50
 LinkedBottle: "{{value:LinkedBottle}}"
 ---
 

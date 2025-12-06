@@ -201,4 +201,4 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 ```
 
 ## Label
-Label::
+Label:: ![[Ruffino - Chianti Classico Riserva Ducale Oro - 2019.webp]]

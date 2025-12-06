@@ -201,4 +201,4 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 ```
 
 ## Label
-Label::
+Label:: ![[Sanvito - Nero d'Avola - 2023.jpg]]

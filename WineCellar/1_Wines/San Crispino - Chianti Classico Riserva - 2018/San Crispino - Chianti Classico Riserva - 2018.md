@@ -201,4 +201,4 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
 ```
 
 ## Label
-Label::
+Label:: ![[San Crispino - Chianti Classico Riserva - 2018.webp]]

@@ -8,7 +8,7 @@ Taste: 4
 Aftertaste: 2
 Overall: 1.5
 AWS Score: 14.5
-100pt Scale: 72.5
+100pt Scale: 86.25
 LinkedBottle: "[[Ruffino - Chianti Classico Riserva Ducale Oro - 2019]]"
 ---
 

@@ -1,12 +1,12 @@
 ---
 fileClass:
-  version: 1.0
+  version: 1
 fields:
   - name: Date
     type: Date
     id: WTDate
     options:
-      dateFormat: "YYYY-MM-DD"
+      dateFormat: YYYY-MM-DD
   - name: TasterName
     type: Input
     id: WTTasterName
@@ -56,10 +56,12 @@ fields:
     id: WT100pt
     options:
       autoUpdate: true
-      formula: (current.Appearance + current.Aroma + current.Taste + current.Aftertaste + current.Overall) * 5
+      formula: 50 + (current.Appearance + current.Aroma + current.Taste + current.Aftertaste + current.Overall) * 2.5
+    path: ""
   - name: LinkedBottle
     type: Input
     id: WTLinkedBottle
+version: "2.0"
 ---
 
 # Wine Tasting FileClass

@@ -8,7 +8,7 @@ Taste: 3.5
 Aftertaste: 1.5
 Overall: 0.5
 AWS Score: 10.5
-100pt Scale: 52.5
+100pt Scale: 76.25
 LinkedBottle: "[[Sanvito - Nero d'Avola - 2023]]"
 ---
 
