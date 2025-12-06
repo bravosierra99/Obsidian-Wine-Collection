@@ -1,37 +1,95 @@
-# My Wine Collection with Obsidian
+# The Reserve
 
-## Introduction
-A year ago, I started to dive deeper into the world of wine. I wanted to get a better understanding of the different varieties, the influences of the land, the winemaker, and the vintage. So I started to buy different wines at my local food store and tasted them one by one. After some months, I didn’t remember exactly which wine was good and which one was not. I made first notes with Obsidian, the number of notes increased (and the clarity decreased), I set it up again, … improved it, and now I have my final setup, which I wanted to share with you.
+My personal collection of wines and whiskeys, tracked in Obsidian with a sophisticated tasting note system.
 
-My setup is for wine, but you can modify it easily and track your craft beers, different coffee beans, whiskies, gins, or whatever you like. 
+## What This Is
 
-The setup has the following **features**:
-- A complete list of all wines you’ve tasted
-- Card view with all the labels
-- “Fridge” view of the wines currently in your inventory
-- Automated shopping lists for your favorite wine stores  
-<br/>
+This is my curated spirits collection vault, built on an Obsidian foundation. I've extended the original [Obsidian-Wine-Collection](https://github.com/Peptino/Obsidian-Wine-Collection) framework to track both wines and whiskeys with a separated bottle/tasting architecture.
 
-I use Obsidian and the following plugins:
-- ![Dataview](https://github.com/blacksmithgu/obsidian-dataview)
-- ![Metadata Menu](https://github.com/mdelobelle/metadatamenu)
-- ![QuickAdd](https://github.com/chhoumann/quickadd)
-- ![Paste image rename](https://github.com/reorx/obsidian-paste-image-rename)
+Each spirit gets:
+- **A bottle note** with all the metadata (distillery, region, price, etc.)
+- **Separate tasting notes** for each time I taste it (multiple tastings per bottle)
+- **Scoring systems**: American Wine Society (AWS) 20-point scale for wines, custom scoring for whiskeys
+- **Aggregated views** showing averages across all tastings
 
-and the ![Minimal Theme](https://github.com/kepano/obsidian-minimal) with its companion plugins
-- ![Minimal Theme Settings](https://github.com/kepano/obsidian-minimal-settings)
-- ![Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
+## Key Features
 
-Additionally, I use "![The Unlabeler](https://unlabeler.app/)" app (for iOS/iPad/MacOS) to get nice, undistorted, and rectangular wine labels. In the interest of transparency, I should mention that I'm the developer of this app.
+- **Separated Architecture**: Bottles and tastings live in subdirectories, keeping the collection organized
+- **Multiple Tasting Support**: Track how a bottle evolves over time or compare opinions with friends
+- **Git Branch Strategy**:
+  - `main` branch: Framework only (templates, scripts, structure)
+  - `tastings-backup` branch: Personal data (bottles, tastings, images)
+- **Interactive Forms**: Click "Add New Tasting" buttons to create tastings inline
+- **DataviewJS Aggregation**: Automatic per-taster averages and statistics
 
-To set everything up from the scratch I wrote a [step-by-step instruction](Step-by-step.md) with all plugins, settings and code examples. If you don't want to set up the vault manually, I made an [example vault](/WineCellar) with the plugins and settings. Just copy it to your computer and open it with Obisidan.
+## Tech Stack
 
-Here is an overview of the final Obsidian Wine Cellar vault:
+**Obsidian Plugins:**
+- [Dataview](https://github.com/blacksmithgu/obsidian-dataview) - Query and aggregate tasting data
+- [Metadata Menu](https://github.com/mdelobelle/metadatamenu) - Structured metadata with field buttons
+- [Minimal Theme](https://github.com/kepano/obsidian-minimal) - Clean, focused interface
 
-<video src="https://github.com/user-attachments/assets/79a23c42-8444-45de-8f46-55c4f3fcc335" controls="controls"></video>
+**Scoring Systems:**
+- **Wines**: AWS 20-point scale (Appearance 0-3, Aroma 0-6, Taste 0-6, Aftertaste 0-3, Overall 0-2)
+- **Whiskeys**: Custom multi-category scoring
 
+## Structure
 
+```
+WineCellar/
+├── 0_Collection/          # Collection views (all bottles, cards, inventory)
+├── 1_Wines/               # Wine bottles and tastings
+│   └── {BottleName}/
+│       ├── {BottleName}.md
+│       └── Tasting-{Date}-{Taster}.md
+├── 1_Whiskeys/            # Whiskey bottles and tastings
+│   └── {BottleName}/
+│       ├── {BottleName}.md
+│       └── Tasting-{Date}-{Taster}.md
+├── 8_FileClass/           # Metadata definitions
+├── 9_Templates/           # Note templates
+└── labels/                # Bottle label images
+```
 
+## Workflow
 
+1. **Add a bottle**: Use the template to create a new bottle note
+2. **Add tastings**: Click "Add New Tasting" button on any bottle
+3. **Track scores**: Fill in the AWS scoring fields (wines) or custom scores (whiskeys)
+4. **View aggregates**: See per-taster averages and all tastings in the bottle note
 
+## Git Workflow
 
+See [BACKUP_PROCESS.md](BACKUP_PROCESS.md) for details on the dual-branch strategy.
+
+**Daily work** (on `tastings-backup`):
+- Add bottles, tastings, images
+- All personal data lives here
+
+**Framework changes** (on `main`):
+- Update templates, FileClasses, scripts
+- Merge back to `tastings-backup` when done
+
+## Origins
+
+This project started as a fork of Peptino's excellent [Obsidian-Wine-Collection](https://github.com/Peptino/Obsidian-Wine-Collection). I've extended it with:
+- Whiskey support
+- Separated bottle/tasting architecture
+- AWS scoring system for wines
+- Multiple taster support with aggregation
+- Git branch strategy for framework vs. data
+
+## Future Plans
+
+Working on automation tools (in sibling `automation/` directory) to:
+- Auto-populate bottle metadata from web research
+- Extract label text from photos using vision models
+- Auto-crop and optimize label images
+- Batch import from sommelier lists
+
+---
+
+**License**: MIT (see [LICENSE](LICENSE))
+
+**Original Framework**: Copyright (c) 2025 Peptino
+**Modifications**: Copyright (c) 2025 Ben Smith
