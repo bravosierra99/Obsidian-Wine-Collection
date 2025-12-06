@@ -1,52 +1,27 @@
 ---
-fileClass: Whiskey
-Name: Buffalo Trace - Stagg Jr - 2024
-Distiller: Buffalo Trace
-WhiskeyName: Stagg Jr Batch 24D
-AgeStatement: 7-9 years
-Year: "2024"
-Type: Bourbon
-MashBill: ~89.5% Corn, ~7% Rye, ~3.5% Malted Barley (BT Mashbill
-BarrelType: New Charred Oak
-Proof: 127.4
-Region-State: Frankfort, Kentucky
-BatchNumber: 24D
-BottleNumber:
-Price: "150"
-PurchaseSource: Geoff
+fileClass: Wine
+Name: San Crispino - Chianti Classico Riserva - 2018
+Winemaker: San Crispino
+WineName: Chianti Classico Riserva
+Vintage: "2018"
+Type: Red wine
+Variety: Chianti
+Country-Region:
+Vineyard:
+Style:
+Price: "30"
+PurchaseSource: Arundel Preserves
 PurchaseLink:
-Inventory: 0
-Buy: 0
-Stars: ⭐️⭐️⭐️⭐️
+Stars: ⭐️⭐️⭐️
 ValueForMoney:
-BottleOpenedDate:
-BottleImage:
+Points:
+Inventory: 0
+Buy:
 ---
-**
+
 ## Bottle Information
 
 ### Product Details
-
-**About This Bourbon:**
-Stagg Jr is Buffalo Trace's barrel proof offering that pays homage to George T. Stagg, the legendary BTAC release. Batch 24D marks an unprecedented fourth release in 2024, breaking from the traditional two releases per year. This batch was released in fall 2024/early 2025.
-
-**Mash Bill:** Buffalo Trace Mashbill #1 (~89.5% Corn, ~7% Rye, ~3.5% Malted Barley)
-
-**Production Notes:**
-- Aged 7-9 years (estimated)
-- Bottled at barrel proof (uncut, unfiltered)
-- Uses the same mashbill as George T. Stagg, Eagle Rare, and E.H. Taylor Jr.
-- Produced at Buffalo Trace Distillery in Frankfort, Kentucky
-- Batch 24D: 4th release of 2024 at 127.4 proof
-
-**Typical Flavor Profile (per reviews):**
-Hot with alcohol, oak, and spice. Reviews note this batch is "mediocre as far as Stagg Jrs go" but still worth MSRP. Hits the palate hot with lingering oak and spice through the finish.
-
-**Market Info:**
-- MSRP: $70
-- Batch 24D was an unanticipated fourth release
-- Mixed reviews from bourbon enthusiasts
-- Worth MSRP but not secondary prices according to reviewers
 
 ### Tasting Notes Summary
 
@@ -55,8 +30,8 @@ Hot with alcohol, oak, and spice. Reviews note this batch is "mediocre as far as
 const currentBottle = dv.current().file.name;
 
 // Get all tastings for this bottle (in subdirectory)
-const tastings = dv.pages('"1_Whiskeys/' + currentBottle + '"')
-    .where(p => p.fileClass === "Tasting")
+const tastings = dv.pages('"1_Wines/' + currentBottle + '"')
+    .where(p => p.fileClass === "Wine Tasting")
     .sort(p => p.Date, 'desc');
 
 if (tastings.length === 0) {
@@ -70,34 +45,40 @@ if (tastings.length === 0) {
         if (!tasterStats[taster]) {
             tasterStats[taster] = {
                 count: 0,
-                nose: 0,
-                palate: 0,
-                finish: 0,
+                appearance: 0,
+                aroma: 0,
+                taste: 0,
+                aftertaste: 0,
                 overall: 0,
-                total: 0
+                awsScore: 0,
+                pt100: 0
             };
         }
         tasterStats[taster].count++;
-        tasterStats[taster].nose += tasting.Nose || 0;
-        tasterStats[taster].palate += tasting.Palate || 0;
-        tasterStats[taster].finish += tasting.Finish || 0;
+        tasterStats[taster].appearance += tasting.Appearance || 0;
+        tasterStats[taster].aroma += tasting.Aroma || 0;
+        tasterStats[taster].taste += tasting.Taste || 0;
+        tasterStats[taster].aftertaste += tasting.Aftertaste || 0;
         tasterStats[taster].overall += tasting.Overall || 0;
-        tasterStats[taster].total += tasting.TotalScore || 0;
+        tasterStats[taster].awsScore += tasting["AWS Score"] || 0;
+        tasterStats[taster].pt100 += tasting["100pt Scale"] || 0;
     }
 
     // Display per-taster averages
-    dv.header(3, "Average Scores by Taster");
+    dv.header(3, "Average Scores by Taster (AWS 20-pt Scale)");
     const tasterRows = Object.entries(tasterStats).map(([taster, stats]) => [
         taster,
         stats.count,
-        (stats.nose / stats.count).toFixed(1),
-        (stats.palate / stats.count).toFixed(1),
-        (stats.finish / stats.count).toFixed(1),
+        (stats.appearance / stats.count).toFixed(1),
+        (stats.aroma / stats.count).toFixed(1),
+        (stats.taste / stats.count).toFixed(1),
+        (stats.aftertaste / stats.count).toFixed(1),
         (stats.overall / stats.count).toFixed(1),
-        (stats.total / stats.count).toFixed(1)
+        (stats.awsScore / stats.count).toFixed(1),
+        (stats.pt100 / stats.count).toFixed(0)
     ]);
     dv.table(
-        ["Taster", "Tastings", "Nose", "Palate", "Finish", "Overall", "Total"],
+        ["Taster", "Tastings", "Appear", "Aroma", "Taste", "Aftertaste", "Overall", "AWS", "100pt"],
         tasterRows
     );
 
@@ -107,16 +88,16 @@ if (tastings.length === 0) {
         p.file.link,
         p.Date,
         p.TasterName,
-        p.DaysFromCrack,
-        p.FillLevel + "%",
-        p.Nose,
-        p.Palate,
-        p.Finish,
+        p.Appearance,
+        p.Aroma,
+        p.Taste,
+        p.Aftertaste,
         p.Overall,
-        p.TotalScore
+        p["AWS Score"],
+        p["100pt Scale"]
     ]);
     dv.table(
-        ["Tasting", "Date", "Taster", "Days", "Fill", "Nose", "Palate", "Finish", "Overall", "Total"],
+        ["Tasting", "Date", "Taster", "Appear", "Aroma", "Taste", "Aftertaste", "Overall", "AWS", "100pt"],
         rows
     );
 }
@@ -126,7 +107,7 @@ if (tastings.length === 0) {
 
 ```dataviewjs
 const bottleName = dv.current().file.name;
-const folderPath = `1_Whiskeys/${bottleName}`;
+const folderPath = `1_Wines/${bottleName}`;
 
 // Create container
 const container = dv.container;
@@ -152,7 +133,7 @@ form.style.marginTop = '10px';
 form.style.backgroundColor = 'var(--background-primary)';
 
 form.innerHTML = `
-    <h3>New Tasting</h3>
+    <h3>New Wine Tasting</h3>
     <div style="margin-bottom: 10px;">
         <label style="display: block; margin-bottom: 5px;">Date (YYYY-MM-DD):</label>
         <input type="text" id="tasting-date" value="${new Date().toISOString().split('T')[0]}" style="width: 100%; padding: 5px;">
@@ -160,14 +141,6 @@ form.innerHTML = `
     <div style="margin-bottom: 10px;">
         <label style="display: block; margin-bottom: 5px;">Taster Name:</label>
         <input type="text" id="tasting-taster" style="width: 100%; padding: 5px;">
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label style="display: block; margin-bottom: 5px;">Days from crack:</label>
-        <input type="number" id="tasting-days" value="0" style="width: 100%; padding: 5px;">
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label style="display: block; margin-bottom: 5px;">Fill level (%):</label>
-        <input type="number" id="tasting-fill" value="100" style="width: 100%; padding: 5px;">
     </div>
     <button id="create-tasting-btn" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Create</button>
     <button id="cancel-tasting-btn" style="padding: 8px 16px; background-color: #ccc; color: black; border: none; border-radius: 4px; cursor: pointer;">Cancel</button>
@@ -188,8 +161,6 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
     try {
         const date = form.querySelector('#tasting-date').value;
         const taster = form.querySelector('#tasting-taster').value;
-        const days = form.querySelector('#tasting-days').value;
-        const fill = form.querySelector('#tasting-fill').value;
 
         if (!date || !taster) {
             new Notice("Date and Taster Name are required!");
@@ -197,15 +168,13 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
         }
 
         // Read template
-        const templatePath = "9_Templates/Tasting.md";
+        const templatePath = "9_Templates/Wine Tasting.md";
         const template = await app.vault.adapter.read(templatePath);
 
         // Replace template variables
         let content = template
             .replace(/{{value:Date}}/g, date)
             .replace(/{{value:TasterName}}/g, taster)
-            .replace(/{{value:DaysFromCrack}}/g, days)
-            .replace(/{{value:FillLevel}}/g, fill)
             .replace(/{{value:LinkedBottle}}/g, `[[${bottleName}]]`);
 
         // Create file
@@ -218,23 +187,18 @@ form.querySelector('#create-tasting-btn').addEventListener('click', async () => 
         const file = app.vault.getAbstractFileByPath(filePath);
         await app.workspace.getLeaf().openFile(file);
 
-        new Notice("Tasting created successfully!");
+        new Notice("Wine tasting created successfully!");
 
         // Hide and reset form
         form.style.display = 'none';
         form.querySelector('#tasting-date').value = new Date().toISOString().split('T')[0];
         form.querySelector('#tasting-taster').value = '';
-        form.querySelector('#tasting-days').value = '0';
-        form.querySelector('#tasting-fill').value = '100';
     } catch (error) {
         console.error("Error creating tasting:", error);
         new Notice(`Error: ${error.message}`);
     }
 });
 ```
-
-## Bottle Image
-BottleImage::![[1_Whiskeys/labels/Bonanza - The Vinekeeper - 2024.webp]]
 
 ## Label
 Label::
