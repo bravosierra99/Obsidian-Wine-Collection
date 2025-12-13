@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "698c14afeeae2a3a",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf7850cf34c7a3ad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "783d5a3eef8cdec4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1_Wines/Forge Cellars - Willow Vineyard - 2023/Forge Cellars - Willow Vineyard - 2023.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Forge Cellars - Willow Vineyard - 2023"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4e78c34e932ee608",
+    "type": "split",
+    "children": [
+      {
+        "id": "cdf5b836f84305f8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "769dca453ad11663",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f6abe62070924d19",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "lio",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "767866e595507586",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 527.5
+  },
+  "right": {
+    "id": "589b245f23f4f9eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "890b797f27e305f7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2cfe9fbc6d8433c9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "8_FileClass/Wine.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Wine"
+            }
+          },
+          {
+            "id": "22b0e3cb7b3b29fe",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "8_FileClass/Wine.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Wine"
+            }
+          },
+          {
+            "id": "355ea7c2381468ed",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e50aac6e25f1a5e6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "8_FileClass/Wine.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Wine"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "quickadd:QuickAdd": false
+    }
+  },
+  "active": "769dca453ad11663",
+  "lastOpenFiles": [
+    "1_Wines/Lloyd - Pinot Noir Sta. Rita Hills - 2022/labels",
+    "1_Wines/Lloyd - Pinot Noir Sta. Rita Hills - 2022/Lloyd - Pinot Noir Sta. Rita Hills - 2022.md",
+    "1_Wines/Lloyd - Pinot Noir Sta. Rita Hills - 2022",
+    "1_Wines/Angélica Zapata - Birth of Cabernet - 2021/labels/label.jpg",
+    "1_Wines/Angélica Zapata - Birth of Cabernet - 2021/labels",
+    "1_Wines/Angélica Zapata - Birth of Cabernet - 2021/Angélica Zapata - Birth of Cabernet - 2021.md",
+    "1_Wines/Angélica Zapata - Birth of Cabernet - 2021",
+    "1_Wines/Poggio Verrano - Setta Super Tuscan - 2022/labels/label.jpg",
+    "1_Wines/Poggio Verrano - Setta Super Tuscan - 2022/labels",
+    "1_Wines/Poggio Verrano - Setta Super Tuscan - 2022/Poggio Verrano - Setta Super Tuscan - 2022.md",
+    "1_Wines/Poggio Verrano - Setta Super Tuscan - 2022",
+    "1_Wines/Beverage Dynamics - Vernstone Reserve Pinot Noir - 2023/labels/label.jpg",
+    "1_Wines/Beverage Dynamics - Vernstone Reserve Pinot Noir - 2023/labels",
+    "1_Wines/Beverage Dynamics - Vernstone Reserve Pinot Noir - 2023/Beverage Dynamics - Vernstone Reserve Pinot Noir - 2023.md",
+    "1_Wines/Beverage Dynamics - Vernstone Reserve Pinot Noir - 2023",
+    "1_Wines/Beverage Dynamics - The Obscene Proprietary Red Blend - 2022/labels/label.jpg",
+    "1_Wines/Beverage Dynamics - The Obscene Proprietary Red Blend - 2022/labels",
+    "1_Wines/Beverage Dynamics - The Obscene Proprietary Red Blend - 2022/Beverage Dynamics - The Obscene Proprietary Red Blend - 2022.md",
+    "1_Wines/Beverage Dynamics - The Obscene Proprietary Red Blend - 2022",
+    "1_Wines/1858 - Cabernet Sauvignon - 2021/labels/label.jpg",
+    "1_Wines/1858 - Cabernet Sauvignon - 2021/labels",
+    "1_Wines/1858 - Cabernet Sauvignon - 2021/1858 - Cabernet Sauvignon - 2021.md",
+    "1_Wines/E Delaunay - Hautes Cotes de Nuits - 2023/labels/label.jpg",
+    "1_Wines/E Delaunay - Hautes Cotes de Nuits - 2023/E Delaunay - Hautes Cotes de Nuits - 2023.md",
+    "1_Wines/Ch Haut Bages Liberal - Paulillac - 2022/labels/label.jpg",
+    "1_Wines/Ch Haut Bages Liberal - Paulillac - 2022/Ch Haut Bages Liberal - Paulillac - 2022.md",
+    "1_Wines/Villa Malacari - Rocca Marche Rosso - 2021/labels/label_original.jpg",
+    "1_Wines/Villa Malacari - Rocca Marche Rosso - 2021/labels/label.jpg",
+    "1_Wines/Trimbach - Riesling Alsace - 2022/Trimbach - Riesling Alsace - 2022.md",
+    "1_Wines/Trimbach - Riesling Alsace - 2022/labels/label.jpg",
+    "1_Whiskeys/Buffalo Trace - Stagg Jr Batch 24D/Buffalo Trace - Stagg Jr Batch 24D.md",
+    "1_Wines/Ruffino - Chianti Classico Riserva Ducale Oro - 2019/Ruffino - Chianti Classico Riserva Ducale Oro - 2019.md",
+    "1_Wines/Juve & Camps - Cava Reserva de la Familia Brut Nature - 2018/Juve & Camps - Cava Reserva de la Familia Brut Nature - 2018.md",
+    "1_Wines/Enrico Serafino - Alta Langa Oudeis Brut - 2020/Enrico Serafino - Alta Langa Oudeis Brut - 2020.md",
+    "1_Wines/Bonanza - The Vinekeeper - 2024/Bonanza - The Vinekeeper - 2024.md",
+    "1_Wines/Castello di Arna - Ama - 2021/Castello di Arna - Ama - 2021.md",
+    "1_Wines/Chateau Suduiraut - Lions de Suduiraut Blanc Sec - 2023/Chateau Suduiraut - Lions de Suduiraut Blanc Sec - 2023.md",
+    "1_Wines/Jax Vineyards - Y3 Taureau Napa Valley Red - 2022/Jax Vineyards - Y3 Taureau Napa Valley Red - 2022.md",
+    "1_Wines/San Crispino - Chianti Classico Riserva - 2018/San Crispino - Chianti Classico Riserva - 2018.md",
+    "1_Wines/Sandhi - Chardonnay Sta. Rita Hills - 2022/Sandhi - Chardonnay Sta. Rita Hills - 2022.md",
+    "1_Wines/Tre Monti Romagna - Petrignone - 2022/Tasting-2025-12-07-Ben.md",
+    "1_Wines/Tre Monti Romagna - Petrignone - 2022/Tre Monti Romagna - Petrignone - 2022.md",
+    "1_Wines/Sanvito - Nero d'Avola - 2023/Sanvito - Nero d'Avola - 2023.md",
+    "1_Whiskeys/Found North - Batch 011 - 2024/Found North - Batch 011 - 2024.md",
+    "1_Whiskeys/Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024/Holladay Distillery - Holladay Soft Red Wheat Rickhouse Proof - 2024.md",
+    "0_Collection/All whiskeys.md"
+  ]
+}
