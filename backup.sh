@@ -220,6 +220,12 @@ case "${1:-both}" in
         ;;
 esac
 
-if [ "$DRY_RUN" = false ]; then
+# Always switch back to tastings-backup when done (unless we're just showing status)
+if [ "$DRY_RUN" = false ] && [ "${1:-both}" != "status" ]; then
+    CURRENT_BRANCH=$(git branch --show-current)
+    if [ "$CURRENT_BRANCH" != "tastings-backup" ]; then
+        echo -e "\n${BLUE}Switching back to tastings-backup branch...${NC}"
+        git checkout tastings-backup
+    fi
     echo -e "\n${GREEN}=== Backup Complete ===${NC}"
 fi
