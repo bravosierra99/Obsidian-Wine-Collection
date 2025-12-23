@@ -25,6 +25,11 @@ fields:
     options: {}
     path: ""
     id: 7n4YyY
+  - name: ABV
+    type: Input
+    options: {}
+    path: ""
+    id: ABV001
   - name: Style
     type: Input
     options: {}
@@ -135,8 +140,16 @@ fieldsOrder:
   - 45xq1T
   - GDdFGl
   - 7n4YyY
+  - ABV001
   - kbu8fg
   - 5moUof
   - fHnIQy
   - PqN89j
 ---
+
+%% #CLAUDE_REQ: When adding/modifying fields here, verify coherence with: %%
+%% #CLAUDE_REQ: - BottleMetadata model (automation/core/models.py) %%
+%% #CLAUDE_REQ: - Templates (automation/templates/wine.md.j2 and 9_Templates/Tasting Note.md) %%
+%% #CLAUDE_REQ: - Generator context (automation/generators/obsidian.py _prepare_context) %%
+%% #CLAUDE_REQ: - Vault reader (automation/utils/vault_reader.py) %%
+%% #CLAUDE_REQ: - Field name mapping (automation/web/routes/management.py field_name_map) %%
