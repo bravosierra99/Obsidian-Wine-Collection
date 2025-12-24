@@ -196,6 +196,13 @@ case "${1:-both}" in
     both)
         backup_bottles $DRY_RUN
         backup_framework $DRY_RUN
+
+        # CRITICAL: Always return to tastings-backup branch for daily work
+        if [ "$DRY_RUN" = false ]; then
+            echo -e "\n${BLUE}Returning to tastings-backup branch for daily work...${NC}"
+            git checkout tastings-backup
+            echo -e "${GREEN}✓ On tastings-backup branch${NC}"
+        fi
         ;;
     status)
         show_status
