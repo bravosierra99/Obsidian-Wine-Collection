@@ -1,12 +1,12 @@
 ---
 fileClass:
-  version: 1.0
+  version: 1
 fields:
   - name: Date
     type: Date
     id: TDate
     options:
-      dateFormat: "YYYY-MM-DD"
+      dateFormat: YYYY-MM-DD
   - name: DaysFromCrack
     type: Number
     id: TDaysFromCrack
@@ -23,6 +23,7 @@ fields:
       min: 0
       max: 100
       step: 1
+    path: ""
   - name: Nose
     type: Number
     id: TNose
@@ -60,6 +61,7 @@ fields:
   - name: LinkedBottle
     type: Input
     id: TLinkedBottle
+version: "2.0"
 ---
 
 # Tasting FileClass
